@@ -4,25 +4,38 @@ Chiedere all’utente di inserire una parola:
 Creare una funzione per capire se la parola inserita è palindroma
 */
 
-const word = document.querySelector('.input');
+let word = document.querySelector('.input');
 
 const button = document.querySelector('.btn');
 
 const palindrome = document.getElementById('palindrome');
 
 
-function isPalindrome(s,i) {
-    return (i=i||0)<0||i>=s.length>>1||s[i]==s[s.length-1-i]&&isPalindrome(s,++i);
+function checkPalindrome(string) {
+
+    // find the length of a string
+    const len = string.length;
+
+    // loop through half of the string
+    for (let i = 0; i < len / 2; i++) {
+
+        // check if first and last string are same
+        if (string[i] !== string[len - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
 }
 
-
 button.addEventListener('click', function(){
-    if ((isPalindrome(word.value)) === true){
+    if ((checkPalindrome(word.value)) === true){
         palindrome.append('E\' palindroma!');
     } else{
         palindrome.append('Purtroppo no!');
     }
+    return;
 })
+
 
 
 
@@ -68,12 +81,6 @@ function getOddOrEvenSum (firstNumber, secondNumber){
 
 buttonOddOrEven.addEventListener('click', function(){
 
-    let random = getRandomNumber(1, 5);
-
-    let OddOrEvenResult = getOddOrEvenSum(random, number.value);
-
-    
-
     if ((OddOrEven.value == 'pari' || OddOrEven.value == 'dispari') && (number.value<= 5 && number.value>=1)){
         userChoice.innerHTML = OddOrEven.value + ' e il numero ' + number.value;
     } else {
@@ -81,15 +88,19 @@ buttonOddOrEven.addEventListener('click', function(){
         return;
     }
 
+    let random = getRandomNumber(1, 5);
+
+    computerChoice.innerHTML = random;
+
+    let OddOrEvenResult = getOddOrEvenSum(random, number.value);
+
+    result.innerHTML = 'La somma dei due numeri è: ' + (random + parseInt(number.value, 10)) + ' ed è un numero: ' + OddOrEvenResult ;
+
     if (OddOrEven.value == finalResult){
         winOrNot.innerHTML = 'Hai Vinto!'
     } else{
         winOrNot.innerHTML = 'Hai Perso!'
     }
-
-    computerChoice.innerHTML = random;
-
-    result.innerHTML = 'La somma dei due numeri è: ' + (random + parseInt(number.value, 10)) + ' ed è un numero: ' + OddOrEvenResult ;
     
 })
 
