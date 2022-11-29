@@ -33,7 +33,7 @@ button.addEventListener('click', function(){
     }
 })
 
-// PARTE DEL GIOCO PARI O DISPARI
+// PARTE DEL GIOCO PARI O DISPARI 
 
 const buttonOddOrEven = document.querySelector('.check-odd-or-even');
 
@@ -50,18 +50,22 @@ function getRandomNumber() {
     return randomNumber;
 }
 
-
-
 buttonOddOrEven.addEventListener('click', function(){
-    if (OddOrEven.value == 'pari' || OddOrEven.value == 'dispari'){
+    if ((OddOrEven.value == 'pari' || OddOrEven.value == 'dispari') && (number.value<= 5 && number.value>=1)){
         result.innerHTML = OddOrEven.value + ' e il numero ' + number.value;
     } else {
         result.innerHTML = "Per favore ricontrolla i dati!";
     }
 
+    
     computerChoice.innerHTML = getRandomNumber();
+    console.log(number.value);
     
 })
+
+
+
+
 
 
 
