@@ -41,25 +41,46 @@ let OddOrEven = document.querySelector('.odd-or-even');
 
 let number = document.querySelector('.number');
 
-const result = document.getElementById('result');
+const userChoice = document.getElementById('user-choice');
 
-let computerChoice = document.getElementById('computer-choice');
+let result = document.getElementById('result');
+
+let finalResult;
+
+let winOrNot = document.createElement('h2');
+let gameOddOrEven = document.querySelector('.game-odd-or-even');
+gameOddOrEven.append(winOrNot);
+
 
 function getRandomNumber() {
     const randomNumber = (Math.floor(Math.random() * 4) + 1);
     return randomNumber;
 }
 
+
 buttonOddOrEven.addEventListener('click', function(){
     if ((OddOrEven.value == 'pari' || OddOrEven.value == 'dispari') && (number.value<= 5 && number.value>=1)){
-        result.innerHTML = OddOrEven.value + ' e il numero ' + number.value;
+        userChoice.innerHTML = OddOrEven.value + ' e il numero ' + number.value;
     } else {
-        result.innerHTML = "Per favore ricontrolla i dati!";
+        userChoice.innerHTML = "Per favore ricontrolla i dati!";
     }
 
-    
-    computerChoice.innerHTML = getRandomNumber();
-    console.log(number.value);
+    let pippo = getRandomNumber();
+
+    if ((pippo + parseInt(number.value, 10)) % 2 == 0){
+        finalResult = 'pari'
+    } else {
+        finalResult = 'dispari'
+    }
+
+    if (OddOrEven.value == finalResult){
+        winOrNot.innerHTML = 'Hai Vinto!'
+    } else{
+        winOrNot.innerHTML = 'Hai Perso!'
+    }
+
+
+    result.innerHTML = 'La somma dei due numeri è: ' + (pippo + parseInt(number.value, 10)) + ' ed è un numero: ' + finalResult;
     
 })
 
