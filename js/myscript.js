@@ -43,6 +43,8 @@ let number = document.querySelector('.number');
 
 const userChoice = document.getElementById('user-choice');
 
+let computerChoice = document.getElementById('computer-choice');
+
 let result = document.getElementById('result');
 
 let finalResult;
@@ -52,25 +54,35 @@ let gameOddOrEven = document.querySelector('.game-odd-or-even');
 gameOddOrEven.append(winOrNot);
 
 
-function getRandomNumber() {
-    const randomNumber = (Math.floor(Math.random() * 4) + 1);
+function getRandomNumber(firstNumber, secondNumber) {
+    const randomNumber = Math.floor(Math.random() * (secondNumber - firstNumber + 1) + firstNumber);
     return randomNumber;
+}
+
+function getOddOrEvenSum (firstNumber, secondNumber){
+    
+    if ((firstNumber + parseInt(secondNumber, 10)) % 2 == 0){
+        finalResult = 'pari'
+    } else {
+        finalResult = 'dispari'
+    }
+    const sum = finalResult;
+    return sum;
 }
 
 
 buttonOddOrEven.addEventListener('click', function(){
+
+    let random = getRandomNumber(1, 5);
+
+    let OddOrEvenResult = getOddOrEvenSum(random, number.value);
+
+    computerChoice.innerHTML = random;
+
     if ((OddOrEven.value == 'pari' || OddOrEven.value == 'dispari') && (number.value<= 5 && number.value>=1)){
         userChoice.innerHTML = OddOrEven.value + ' e il numero ' + number.value;
     } else {
         userChoice.innerHTML = "Per favore ricontrolla i dati!";
-    }
-
-    let random = getRandomNumber();
-
-    if ((random + parseInt(number.value, 10)) % 2 == 0){
-        finalResult = 'pari'
-    } else {
-        finalResult = 'dispari'
     }
 
     if (OddOrEven.value == finalResult){
@@ -79,8 +91,7 @@ buttonOddOrEven.addEventListener('click', function(){
         winOrNot.innerHTML = 'Hai Perso!'
     }
 
-
-    result.innerHTML = 'La somma dei due numeri è: ' + (random + parseInt(number.value, 10)) + ' ed è un numero: ' + finalResult;
+    result.innerHTML = 'La somma dei due numeri è: ' + (random + parseInt(number.value, 10)) + ' ed è un numero: ' + OddOrEvenResult ;
     
 })
 
