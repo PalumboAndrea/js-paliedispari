@@ -9,9 +9,9 @@ Dichiariamo chi ha vinto.
 Consigli del giorno
 Scriviamo sempre in italiano i passaggi che vogliamo fare
 Scriviamo sempre solo un pezzetto di codice alla volta, se funziona allora andiamo avanti.
-
-
 */
+
+// PARTE DEL GIOCO PALINDROMO
 
 const word = document.querySelector('.input');
 
@@ -32,6 +32,38 @@ button.addEventListener('click', function(){
         palindrome.append('Purtroppo no!');
     }
 })
+
+// PARTE DEL GIOCO PARI O DISPARI
+
+const buttonOddOrEven = document.querySelector('.check-odd-or-even');
+
+let OddOrEven = document.querySelector('.odd-or-even');
+
+let number = document.querySelector('.number');
+
+const result = document.getElementById('result');
+
+let computerChoice = document.getElementById('computer-choice');
+
+function getRandomNumber() {
+    const randomNumber = (Math.floor(Math.random() * 4) + 1);
+    return randomNumber;
+}
+
+
+
+buttonOddOrEven.addEventListener('click', function(){
+    if (OddOrEven.value == 'pari' || OddOrEven.value == 'dispari'){
+        result.innerHTML = OddOrEven.value + ' e il numero ' + number.value;
+    } else {
+        result.innerHTML = "Per favore ricontrolla i dati!";
+    }
+
+    computerChoice.innerHTML = getRandomNumber();
+    
+})
+
+
 
 
 
