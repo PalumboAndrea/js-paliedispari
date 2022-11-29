@@ -8,8 +8,10 @@ let word = document.querySelector('.input');
 
 const button = document.querySelector('.btn');
 
-const palindrome = document.getElementById('palindrome');
-
+let palindrome = document.createElement('h2');
+let containerPalindrome = document.querySelector('.container-palindrome');
+containerPalindrome.append(palindrome);
+palindrome.classList.add('palindrome');
 
 function checkPalindrome(string) {
 
@@ -28,15 +30,15 @@ function checkPalindrome(string) {
 }
 
 button.addEventListener('click', function(){
-    if ((checkPalindrome(word.value)) === true){
+    if ((word.value).length === 0){
+        alert('Inserire un dato!');
+    } else if ((checkPalindrome(word.value)) === true){
         palindrome.append('E\' palindroma!');
-    } else{
+    } else {
         palindrome.append('Purtroppo no!');
-    }
+    };
     return;
 })
-
-
 
 
 // PARTE DEL GIOCO PARI O DISPARI
