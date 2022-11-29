@@ -68,25 +68,28 @@ function getOddOrEvenSum (firstNumber, secondNumber){
 
 buttonOddOrEven.addEventListener('click', function(){
 
-    userChoice.innerHTML = '';
-    computerChoice.innerHTML = '';
-    winOrNot.innerHTML = '';
-    result.innerHTML = '';
+    let random = getRandomNumber(1, 5);
+
+    let OddOrEvenResult = getOddOrEvenSum(random, number.value);
+
+    
 
     if ((OddOrEven.value == 'pari' || OddOrEven.value == 'dispari') && (number.value<= 5 && number.value>=1)){
-        let random = getRandomNumber(1, 5);
-        let OddOrEvenResult = getOddOrEvenSum(random, number.value);
         userChoice.innerHTML = OddOrEven.value + ' e il numero ' + number.value;
-        computerChoice.innerHTML = random;
-        if (OddOrEven.value == finalResult){
-            winOrNot.innerHTML = 'Hai Vinto!'
-        } else{
-            winOrNot.innerHTML = 'Hai Perso!'
-        }
-        result.innerHTML = 'La somma dei due numeri è: ' + (random + parseInt(number.value, 10)) + ' ed è un numero: ' + OddOrEvenResult;
     } else {
-        userChoice.innerHTML = "Per favore ricontrolla i dati!";
+        alert("Per favore ricontrolla i dati!");
+        return;
     }
+
+    if (OddOrEven.value == finalResult){
+        winOrNot.innerHTML = 'Hai Vinto!'
+    } else{
+        winOrNot.innerHTML = 'Hai Perso!'
+    }
+
+    computerChoice.innerHTML = random;
+
+    result.innerHTML = 'La somma dei due numeri è: ' + (random + parseInt(number.value, 10)) + ' ed è un numero: ' + OddOrEvenResult ;
     
 })
 
