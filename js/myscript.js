@@ -65,9 +65,9 @@ buttonOddOrEven.addEventListener('click', function(){
         userChoice.innerHTML = "Per favore ricontrolla i dati!";
     }
 
-    let pippo = getRandomNumber();
+    let random = getRandomNumber();
 
-    if ((pippo + parseInt(number.value, 10)) % 2 == 0){
+    if ((random + parseInt(number.value, 10)) % 2 == 0){
         finalResult = 'pari'
     } else {
         finalResult = 'dispari'
@@ -80,7 +80,7 @@ buttonOddOrEven.addEventListener('click', function(){
     }
 
 
-    result.innerHTML = 'La somma dei due numeri è: ' + (pippo + parseInt(number.value, 10)) + ' ed è un numero: ' + finalResult;
+    result.innerHTML = 'La somma dei due numeri è: ' + (random + parseInt(number.value, 10)) + ' ed è un numero: ' + finalResult;
     
 })
 
