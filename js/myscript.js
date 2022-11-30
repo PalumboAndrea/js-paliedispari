@@ -83,8 +83,8 @@ function getOddOrEvenSum (firstNumber, secondNumber){
 
 buttonOddOrEven.addEventListener('click', function(){
 
-    if ((OddOrEven.value == 'pari' || OddOrEven.value == 'dispari') && (number.value<= 5 && number.value>=1)){
-        userChoice.innerHTML = OddOrEven.value + ' e il numero ' + number.value;
+    if ((OddOrEven.value.toLowerCase().trim() == 'pari' || OddOrEven.value.toLowerCase().trim() == 'dispari') && (number.value<= 5 && number.value>=1)){
+        userChoice.innerHTML = OddOrEven.value.toLowerCase().trim() + ' e il numero ' + number.value;
     } else {
         alert("Per favore ricontrolla i dati!");
         return;
